@@ -1,7 +1,7 @@
 const Sequelize = require ("sequelize")
 
-const Kategori = (sequelizeInstance) => {
-    return sequelizeInstance.define("kategoris", {
+const Kejahatan = (sequelizeInstance) => {
+    return sequelizeInstance.define("kejahatans", {
         id: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
@@ -30,4 +30,4 @@ const Kategori = (sequelizeInstance) => {
     })
 }
 
-module.exports = Kategori
+module.exports = Kejahatan

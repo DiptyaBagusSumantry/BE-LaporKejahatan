@@ -1,0 +1,8 @@
+CREATE TRIGGER statusLaporan_insert_trigger
+AFTER INSERT ON laporans
+FOR EACH ROW
+BEGIN
+  INSERT INTO status_laporans (id, tanggapan, status, created_at, updated_at, laporan_id)
+  VALUES (NEW.id, 'belum diproses', 'terkirim', CURDATE(), CURDATE(), NEW.id);
+END;
+// 

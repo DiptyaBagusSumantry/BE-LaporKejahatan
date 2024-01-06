@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cobain-team/backend-arcip#readme",
   "dependencies": {
+    "@img/sharp-win32-x64": "^0.33.1",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -26,7 +27,9 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.1",
     "nodemailer": "^6.9.7",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "sharp": "^0.33.1",
+    "slug": "^8.2.3"
   },
   "devDependencies": {
     "sequelize-cli": "^6.6.1"

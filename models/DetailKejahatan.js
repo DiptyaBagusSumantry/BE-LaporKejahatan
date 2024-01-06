@@ -9,59 +9,59 @@ const DetailKejahatan = (sequelizeInstance) => {
             allowNull: false,
             unique: 'id',
         },
-        maling: {
+        pencurian: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            default: 0,
+            defaultValue: 0,
             validate: {
                 notNull: {
                     args: true,
-                    msg: "Maling Can't be Null!"
+                    msg: "pencurian Can't be Null!"
                 },
                 notEmpty: {
                     args: true,
-                    msg: "Maling Can't be Empty!"
+                    msg: "pencurian Can't be Empty!"
                 }
             }
         },
-        copet: {
+        kejahatan_sosial: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            default: 0,
+            defaultValue: 0,
             validate: {
                 notNull: {
                     args: true,
-                    msg: "Copet Can't be Null!"
+                    msg: "kejahatan_sosial Can't be Null!"
                 },
                 notEmpty: {
                     args: true,
-                    msg: "Copet Can't be Empty!"
+                    msg: "kejahatan_sosial Can't be Empty!"
                 }
             }
         },
-        perampok: {
+        pembulian: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            default: 0,
+            defaultValue: 0,
             validate: {
                 notNull: {
                     args: true,
-                    msg: "Perampok Can't be Null!"
+                    msg: "pembulian Can't be Null!"
                 },
                 notEmpty: {
                     args: true,
-                    msg: "Perampok Can't be Empty!"
+                    msg: "pembulian Can't be Empty!"
                 }
             }
         },
-        kdrt: {
+        penganiayaan: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            default: 0,
+            defaultValue: 0,
             validate: {
                 notNull: {
                     args: true,
-                    msg: "KDRT Can't be Null!"
+                    msg: "penganiayaan Can't be Null!"
                 },
                 notEmpty: {
                     args: true,
@@ -69,33 +69,33 @@ const DetailKejahatan = (sequelizeInstance) => {
                 }
             }
         },
-        pembunuhan: {
+        penipuan: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            default: 0,
+            defaultValue: 0,
             validate: {
                 notNull: {
                     args: true,
-                    msg: "Pembunuhan Can't be Null!"
+                    msg: "penipuan Can't be Null!"
                 },
                 notEmpty: {
                     args: true,
-                    msg: "Pembunuhan Can't be Empty!"
+                    msg: "penipuan Can't be Empty!"
                 }
             }
         },
-        membuatOnar: {
+        narkoba: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            default: 0,
+            defaultValue: 0,
             validate: {
                 notNull: {
                     args: true,
-                    msg: "Membuat Onar Can't be Null!"
+                    msg: "narkoba Can't be Null!"
                 },
                 notEmpty: {
                     args: true,
-                    msg: "Membuat Onar Can't be Empty!"
+                    msg: "narkoba Can't be Empty!"
                 }
             }
         },

@@ -80,6 +80,21 @@ const Laporan = (sequelizeInstance) => {
             },
           },
         },
+        nomer_pengaduan: {
+          type: Sequelize.STRING,
+          defaultValue: false,
+          allowNull: false,
+          validate: {
+            notNull: {
+              args: true,
+              msg: "Nomer Pengaduan Can't be Null!",
+            },
+            notEmpty: {
+              args: true,
+              msg: "Nomer Pengaduan Can't be Empty!",
+            },
+          },
+        },
         kategori: {
           type: Sequelize.STRING,
           allowNull: false,
@@ -120,6 +135,12 @@ const Laporan = (sequelizeInstance) => {
               args: true,
               msg: "Image Can't be Empty!",
             },
+          },
+          get: function () {
+            return JSON.parse(this.getDataValue("image"));
+          },
+          set: function (val) {
+            return this.setDataValue("image", JSON.stringify(val));
           },
         },
       },
