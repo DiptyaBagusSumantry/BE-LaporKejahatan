@@ -67,7 +67,7 @@ class AuthController {
           role: user.role,
         };
       });
-      res.status(200).json(fetch);
+      return res.status(200).json(fetch);
     } catch (error) {
       res.status(500).json({
         message: error.message,
