@@ -5,7 +5,7 @@ const sharp = require("sharp");
 class BeritaController {
   static async createBertia(req, res) {
     try {
-      const { title, deskripsi, image } = req.body;
+      const { title, deskripsi, image, date } = req.body;
       const titleSlug = slug(title);
       // console.log(titleSlug);
 
@@ -13,6 +13,7 @@ class BeritaController {
         title,
         slug: titleSlug,
         deskripsi,
+        date
       });
       if (image !== "") {
         try {
@@ -93,7 +94,7 @@ class BeritaController {
 
   static async updateBerita(req, res) {
     try {
-      const { title, deskripsi, image } = req.body;
+      const { title, deskripsi, image, date } = req.body;
       const titleSlug = slug(title);
 
       const updateBerita = await Models.Berita.update(
@@ -101,6 +102,7 @@ class BeritaController {
           title,
           slug: titleSlug,
           deskripsi,
+          date
         },
         {
           where: {
