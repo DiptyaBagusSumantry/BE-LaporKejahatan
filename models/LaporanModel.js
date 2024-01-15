@@ -66,8 +66,9 @@ const Laporan = (sequelizeInstance) => {
           },
         },
         status: {
-          type: Sequelize.STRING,
-          defaultValue: false,
+          type: Sequelize.ENUM,
+          values: ["progress", "InReview", "done", "declined"],
+          defaultValue: "progress",
           allowNull: false,
           validate: {
             notNull: {
