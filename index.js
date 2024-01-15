@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3300", "http://127.0.0.1:3300"],
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
     exposedHeaders: "Authorization",
     methods: ["GET", "PUT", "POST", "DELETE"],
   })
