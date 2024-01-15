@@ -31,11 +31,11 @@ class AuthController {
         }
       );
 
-      res.cookie("refreshToken", accessToken, {
-        httpOnly: true,
-        maxAge: 60 * 60 * 8000, //milidetik
-        sameSite: "lax",
-      });
+      // res.cookie("refreshToken", accessToken, {
+      //   httpOnly: true,
+      //   maxAge: 60 * 60 * 8000, //milidetik
+      //   sameSite: "lax",
+      // });
 
       res.status(200).json({
         accessToken: accessToken,
