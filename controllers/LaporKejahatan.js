@@ -249,6 +249,62 @@ class LaporanKejahatanController {
       }
     }
   }
+  static async updateLaporanStatus(req, res) {
+    try {
+      const user = accesToken(req);
+
+      const { status } = req.body;
+
+      const update = await Models.Laporan.update(
+        {
+          status,
+        },
+        {
+          where: {
+            userId: user.id,
+            id: req.params.id,
+          },
+        }
+      );
+
+      if (update[0] == 0) {
+        return res.status(200).json({
+          message: "Failed Update Laporan!",
+          status: update[0],
+        });
+      }
+      return res.status(200).json({
+        message: "Success Update Laporan!",
+        status: update[0],
+      });
+    } catch (error) {
+      if (error.errors) {
+        const data = error.errors;
+
+        const ErrorMsg = [];
+
+        data.map((result) => {
+          const chekPath = ErrorMsg.find((error) => error.path === result.path);
+          if (chekPath) {
+            chekPath.message.push(result.message);
+          } else {
+            ErrorMsg.push({
+              path: result.path,
+              message: [result.message],
+            });
+          }
+        });
+
+        res.status(500).json({
+          message: ErrorMsg,
+        });
+      } else {
+        res.status(500).json({
+          message: error.message,
+        });
+      }
+    }
+  }
 
   static async deleteLaporan(req, res) {
     try {
