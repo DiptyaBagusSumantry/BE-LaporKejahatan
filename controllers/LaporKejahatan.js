@@ -104,10 +104,14 @@ class LaporanKejahatanController {
   static async getLaporan(req, res) {
     try {
       const user = accesToken(req);
+      console.log(user)
+      let whereClause = {};
+      if (user.role == "pelapor") {
+        whereClause.userId = user.id;
+      }
+      console.log(whereClause)
       const get = await Models.Laporan.findAll({
-        where: {
-          userId: user.id,
-        },
+        where: whereClause
       });
       res.status(200).json({
         data: get,
@@ -122,15 +126,21 @@ class LaporanKejahatanController {
   static async getDetailLaporan(req, res) {
     try {
       const user = accesToken(req);
+      const whereClause = { id: req.params.id };
+      if (user.role == "pelapor") {
+        whereClause.userId = user.id;
+      }
       const get = await Models.Laporan.findOne({
-        where: {
-          userId: user.id,
-          id: req.params.id,
-        },
+        where: whereClause,
         include: {
           model: await Models.StatusLaporan,
         },
       });
+      if (get == null) {
+        return res.status(200).json({
+          message: "Laporan tidak ditemukan",
+        });
+      }
       get.status_laporans.sort(
         (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
       );

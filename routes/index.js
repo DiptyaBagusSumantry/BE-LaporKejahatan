@@ -28,14 +28,14 @@ router.delete("/laporan-kejahatan/:id", verifyToken,LaporanKejahatanController.d
 
 //Berita
 router.post("/berita", verifyToken, IsAdmin, BeritaController.createBertia);
-router.get("/berita", verifyToken, BeritaController.getBerita);
-router.get("/berita/:id", verifyToken, BeritaController.getDetailBerita);
-router.put("/berita/:id", verifyToken, BeritaController.updateBerita);
-router.delete("/berita/:id", verifyToken, BeritaController.deleteBerita);
+router.get("/berita",  BeritaController.getBerita);
+router.get("/berita/:id",  BeritaController.getDetailBerita);
+router.put("/berita/:id", verifyToken, IsAdmin, BeritaController.updateBerita);
+router.delete("/berita/:id", verifyToken, IsAdmin, BeritaController.deleteBerita);
 
 //List Desa Kecamatan
 router.get("/list-kecamatan-desa", verifyToken, DesaKecamatanController.ListKecamatanDesa);
-router.get("/batas-area", verifyToken, DesaKecamatanController.BatasAreaMap);
+router.get("/batas-area", verifyToken, IsAdmin, DesaKecamatanController.BatasAreaMap);
 
 router.get("/detail-kejahatan/:desaKecamatanId", verifyToken, DetailKejahatanController.getDetailKejahatan);
 
