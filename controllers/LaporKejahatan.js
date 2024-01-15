@@ -167,7 +167,7 @@ class LaporanKejahatanController {
     try {
       const user = accesToken(req);
 
-      const { name, email, phone, kategori, deskripsi, image, desaKecamataId } = req.body;
+      const { name, email, phone, kategori, deskripsi, image, desaKecamataId, status } = req.body;
 
       const imagePath = [];
 
@@ -202,6 +202,7 @@ class LaporanKejahatanController {
           deskripsi,
           desaKecamataId,
           image: imagePath,
+          status
         },
         {
           where: {
