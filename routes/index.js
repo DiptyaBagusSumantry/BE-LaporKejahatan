@@ -23,7 +23,7 @@ router.post("/laporan-kejahatan", verifyToken,LaporanKejahatanController.createL
 router.get("/laporan-kejahatan", verifyToken,LaporanKejahatanController.getLaporan);
 router.get("/laporan-kejahatan/:id", verifyToken,LaporanKejahatanController.getDetailLaporan);
 router.put("/laporan-kejahatan/:id", verifyToken,LaporanKejahatanController.updateLaporan);
-router.patch("/laporan-kejahatan/:id", verifyToken,LaporanKejahatanController.updateLaporan);
+router.patch("/laporan-kejahatan/:id", verifyToken,LaporanKejahatanController.updateLaporanStatus);
 router.delete("/laporan-kejahatan/:id", verifyToken,LaporanKejahatanController.deleteLaporan);
 
 //Berita
@@ -50,7 +50,7 @@ router.put("/progress-laporan/:id", verifyToken,IsAdmin,StatuslaporanController.
 router.post("/check-laporan", LaporanKejahatanController.getDetailLaporanNoLogin);
 
 //Header Dashboard
-router.get("/header", verifyToken, IsAdmin, DashboardController.headerDashbaord);
+router.get("/header", DashboardController.headerDashbaord);
 router.get("/grafik-daftar-kejahatan", verifyToken, IsAdmin, DashboardController.daftarKejahatan);
 
 module.exports = router;
