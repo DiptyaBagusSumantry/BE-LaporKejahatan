@@ -50,7 +50,7 @@ router.put("/progress-laporan/:id", verifyToken,IsAdmin,StatuslaporanController.
 router.post("/check-laporan", LaporanKejahatanController.getDetailLaporanNoLogin);
 
 //Header Dashboard
-router.get("/header", verifyToken, IsAdmin, DashboardController.headerDashbaord);
+router.get("/header", DashboardController.headerDashbaord);
 router.get("/grafik-daftar-kejahatan", verifyToken, IsAdmin, DashboardController.daftarKejahatan);
 
 module.exports = router;
