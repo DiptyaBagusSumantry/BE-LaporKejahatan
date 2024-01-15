@@ -67,7 +67,7 @@ const Laporan = (sequelizeInstance) => {
         },
         status: {
           type: Sequelize.ENUM,
-          values: ["progress", "InReview", "done", "declined"],
+          values: ["Progress", "InReview", "Done", "Declined"],
           defaultValue: "progress",
           allowNull: false,
           validate: {
