@@ -50,8 +50,11 @@ class AuthController {
 
   static async Fetch(req, res) {
     try {
+      const authHeader = req.headers["authorization"];
+      const token = authHeader && authHeader.split(" ")[1];
+
       const user = jwt.verify(
-        req.cookies.refreshToken,
+        token,
         process.env.REFRESH_TOKEN_SECRET,
         (error, decoded) => {
           if (error) return res.sendStatus(403);
@@ -106,7 +109,7 @@ class AuthController {
       });
 
       res.status(201).json({
-        msg: "Success create user"
+        msg: "Success create user",
       });
     } catch (error) {
       if (error.errors) {
