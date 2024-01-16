@@ -55,14 +55,17 @@ class LaporanKejahatanController {
 
             imagePath.push(`/assets/images/laporan/${imageName}`);
 
-            await Models.Laporan.update({
-              image: imagePath
-            },{
-              where: {
-                id: create.id
-              }
-            })
-          }
+            const updateImage = await Models.Laporan.findByPk(create.id);
+            updateImage.image = imagePath;
+            await updateImage.save();
+          //   await Models.Laporan.update({
+          //     image: imagePath
+          //   },{
+          //     where: {
+          //       id: create.id
+          //     }
+          //   })
+          // }
         } catch (error) {
           return res.status(500).json({ msg: error.message });
         }
