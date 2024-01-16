@@ -65,7 +65,7 @@ class LaporanKejahatanController {
           //       id: create.id
           //     }
           //   })
-          // }
+          }
         } catch (error) {
           return res.status(500).json({ msg: error.message });
         }
