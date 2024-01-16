@@ -80,9 +80,11 @@ class AuthController {
 
   static async Logout(req, res) {
     try {
-      const refreshToken = req.cookies.refreshToken;
+       const authHeader = req.headers["authorization"];
+       const token = authHeader && authHeader.split(" ")[1];
+
       jwt.verify(
-        refreshToken,
+        token,
         process.env.REFRESH_TOKEN_SECRET,
         async (error, decoded) => {
           if (error) return res.sendStatus(403);
