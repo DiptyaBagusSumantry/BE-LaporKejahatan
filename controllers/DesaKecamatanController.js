@@ -32,8 +32,17 @@ class DesaKecamatanController {
       const get = await Models.DesaKecamatan.findAll({
         order: [["name", "ASC"]],
       });
+      const result = get.map((data) => {
+        return {
+          id: data.id,
+          name: data.name,
+          status: data.status,
+          name_kecamatan: data.name_kecamatan,
+          batas_area: JSON.parse(data.batas_area)[0],
+        };
+      });
       res.status(200).json({
-        data: get,
+        data: result,
       });
     } catch (error) {
       res.status(500).json({
