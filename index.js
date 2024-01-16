@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const { createAdmin } = require("./seeders/AdminSeeders.js");
 const { insertDataDesa } = require("./seeders/NamaDesaKecamatan.js");
 const { createKejahatan } = require("./seeders/KejahatanSeeders.js");
+const path = require("path");
 
 // //Insialisasi ke Database
 // Models.sequelizeInstance
@@ -36,8 +37,17 @@ app.get("/", (req, res) => {
 // app.use(cors());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-app.use(express.json({ limit: '10mb' }))
+app.use(express.json());
+app.use(
+  "/assets/images/laporan",
+  express.static(path.join(__dirname, "assets/images/laporan"))
+);
+app.use(
+  "/assets/images/artikel",
+  express.static(path.join(__dirname, "assets/images/artikel"))
+);
+
+
 app.use(
   cors({
     credentials: true,
